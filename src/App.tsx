@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import { fetchQuizQuestions } from "./API";
-//compnents
+//components
 import QuestionCard from "./components/QuestionCard";
+import SvgSvgLoader from "./iconComponents/SvgLoader";
+import Score from "./components/Score";
+import { StartButton } from "./components/StartButton";
+// import SvgBackgoundSvg from "./iconComponents/BackgoundSvg";
+import Header from "./components/Header";
 //types
 import { QuestionsState, Difficulty } from "./API";
 //styles
@@ -17,18 +22,33 @@ export type AnswerObject = {
 const TOTAL_QUESTIONS = 10;
 
 function App() {
+  //********************useStates**********************
   const [loading, setloading] = useState(false);
   const [questions, setQuestions] = useState<QuestionsState[]>([]);
   const [number, setNumber] = useState(0);
   const [userAnswers, setUserAnswers] = useState<AnswerObject[]>([]);
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(true);
+  const [answered, setAnswered] = useState(0);
+  const [finished, setFinished] = useState(false);
+  const [checked, setChecked] = useState(false);
 
-  console.log(questions);
+  // console.log("loading: ", loading);
+  // console.log("questions: ", questions);
+  // console.log("number: ", number);
+  // console.log("userAnswers: ", userAnswers);
+  // console.log("score: ", score);
+  // console.log("gameOver: ", gameOver);
+  // console.log("answered: ", answered);
+  // console.log("finished: ", finished);
 
+  //********************events*************************
   const startTrivia = async () => {
     setloading(true);
     setGameOver(false);
+    setUserAnswers([]);
+    setAnswered(0);
+    setFinished(false);
 
     const newQuestions = await fetchQuizQuestions(
       TOTAL_QUESTIONS,
@@ -37,13 +57,13 @@ function App() {
 
     setQuestions(newQuestions);
     setScore(0);
-    setUserAnswers([]);
     setNumber(0);
     setloading(false);
   };
 
   const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (!gameOver) {
+      setChecked(true);
       const answer = e.currentTarget.value;
       //check asnwer against the correct answer
       const correct = questions[number].correct_answer === answer;
@@ -60,12 +80,14 @@ function App() {
       };
 
       setUserAnswers((prev) => [...prev, answerObject]);
+      setAnswered((prev) => prev + 1);
     }
   };
 
   const nextQuestion = () => {
     //move to the next question if not the last question
     const nextQuestion = number + 1;
+    setChecked(false);
 
     if (nextQuestion === TOTAL_QUESTIONS) {
       setGameOver(true);
@@ -74,40 +96,77 @@ function App() {
     }
   };
 
+  const finishQuiz = () => {
+    setFinished(true);
+  };
+
+  //***************************************************
+
   return (
     <>
       <GlobalStyle />
       <div className="App">
-        <h1>React-Quiz-App</h1>
-        {gameOver || userAnswers.length === TOTAL_QUESTIONS ? (
-          <button className="start" onClick={startTrivia}>
-            Start
-          </button>
-        ) : null}
-        {!gameOver && (
-          <p className="score">
-            Score:{score}/{TOTAL_QUESTIONS}
-          </p>
+        <Header heading={"React-Quiz-App"} />
+
+        {/* {*************  FinalScore  **************} */}
+
+        {finished && (
+          <div>
+            <h1>
+              Your Score is: {score}/{TOTAL_QUESTIONS}
+            </h1>
+          </div>
         )}
-        {loading && <p>Loading Questions...</p>}
-        {!loading && !gameOver && (
+
+        {/**********  Start/Restart Button ************/}
+
+        {gameOver || finished ? (
+          <StartButton
+            callback={startTrivia}
+            answered={answered === TOTAL_QUESTIONS ? true : false}
+          />
+        ) : null}
+
+        {/* {**************  Score ******************} */}
+
+        {/* {!gameOver && !loading && (
+          <Score score={score} totalQ={TOTAL_QUESTIONS} />
+        )} */}
+
+        {/*************  SVG Loader  ******************/}
+        {loading && (
+          <div
+            style={{
+              marginTop: "120px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <SvgSvgLoader />
+          </div>
+        )}
+
+        {/* {****************  Question Card  ****************} */}
+
+        {!loading && !gameOver && !finished && (
           <QuestionCard
+            score={score}
+            totalQ={TOTAL_QUESTIONS}
             questionNr={number + 1}
             totalQuestions={TOTAL_QUESTIONS}
             question={questions[number].question}
             answer={questions[number].answers}
             userAnswer={userAnswers ? userAnswers[number] : undefined}
             callback={checkAnswer}
+            nextCallback={nextQuestion}
+            checked={checked}
+            finishCallback={finishQuiz}
           />
         )}
-        {!gameOver &&
-          !loading &&
-          userAnswers.length === number + 1 &&
-          number !== TOTAL_QUESTIONS - 1 && (
-            <button className="next" onClick={nextQuestion}>
-              Next
-            </button>
-          )}
+        {/* {answered === TOTAL_QUESTIONS && !finished && (
+          <button onClick={finishQuiz}>Finish</button>
+        )} */}
       </div>
     </>
   );

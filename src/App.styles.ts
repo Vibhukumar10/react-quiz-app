@@ -5,7 +5,8 @@ export const GlobalStyle = createGlobalStyle`
     html {
         height: 100vh;
         width: 100vw;
-        background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+        background-color: #ffa69e;
+        background-image: linear-gradient(315deg, #ffa69e 0%, #5d4954 74%);     
         font-family: Montserrat, san-serif;
     }
 
@@ -15,5 +16,9 @@ export const GlobalStyle = createGlobalStyle`
         align-items: center;
         justify-content: center;
         user-select: none;
+    }
+
+    button {
+        cursor: pointer;
     }
 `;

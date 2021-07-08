@@ -1,5 +1,11 @@
 import styled from "styled-components";
 
+type ButtonWrapperProps = {
+  correct: boolean;
+  userClicked: boolean;
+  answered: boolean;
+};
+
 export const CardCSS = styled.div`
   .container {
     background-color: #ffffff;
@@ -43,21 +49,17 @@ export const CardCSS = styled.div`
     justify-content: space-evenly;
   }
 
-  .option-btn {
-    text-align: left;
+  /*.wrapper {
     width: 300px;
     height: 50px;
-    font-family: Montserrat, sans-serif;
     background: transparent;
-    border: 1px solid #000;
     border-radius: 20px;
     font-size: 0.9rem;
-    padding-left: 20px;
-  }
+  }*/
 
   .next {
     button {
-      border: 1px solid #111;
+      border: 2px solid #111;
       background: transparent;
       height: 50px;
       width: 50px;
@@ -67,18 +69,61 @@ export const CardCSS = styled.div`
     button:hover {
       background: lightgreen;
       color: white;
+      transition: 0.5s;
     }
   }
 
   .finish {
     button {
       background: transparent;
-      border: 1px solid #111;
+      border: 2px solid #111;
       height: 35px;
       width: 100px;
       border-radius: 10px;
       font-size: 1rem;
       font-family: "Roboto Mono", monospace;
     }
+    button:hover {
+      background: lightgreen;
+      color: white;
+      transition: 0.5s;
+    }
+  }
+`;
+
+export const ButtonWrapper = styled.div<ButtonWrapperProps>`
+  button {
+    text-align: left;
+    width: 300px;
+    height: 50px;
+    font-family: Montserrat, sans-serif;
+    background: transparent;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    padding-left: 20px;
+    border: ${({ correct, userClicked }) =>
+      correct
+        ? "2px solid green"
+        : !correct && userClicked
+        ? "2px solid red"
+        : "2px solid #000"};
+
+    font-size: ${({ answered, correct, userClicked }) =>
+      answered && (userClicked || correct) ? "1.2rem" : "1rem"};
+
+    color: ${({ answered, correct, userClicked }) =>
+      answered && (userClicked || correct) ? "#111" : ""};
+
+    background: ${({ correct, userClicked }) =>
+      correct
+        ? "lightgreen"
+        : !correct && userClicked
+        ? "#E98580"
+        : "transparent"};
+  }
+
+  button:hover {
+    background: ${({ answered }) => !answered && "lightblue"};
+    transition: 0.5s;
   }
 `;

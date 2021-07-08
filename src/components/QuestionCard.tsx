@@ -3,7 +3,7 @@ import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 //types
 import { AnswerObject } from "../App";
 //styles
-import { CardCSS } from "./QuestionCard.styles";
+import { CardCSS, ButtonWrapper } from "./QuestionCard.styles";
 
 type props = {
   score: number;
@@ -61,7 +61,12 @@ const QuestionCard: React.FC<props> = ({
         </div>
         <div className="options">
           {answer.map((answer) => (
-            <div key={answer}>
+            <ButtonWrapper
+              key={answer}
+              correct={userAnswer?.correctAnswer === answer}
+              userClicked={userAnswer?.answer === answer}
+              answered={checked}
+            >
               <button
                 className="option-btn"
                 disabled={userAnswer ? true : false}
@@ -70,7 +75,7 @@ const QuestionCard: React.FC<props> = ({
               >
                 <span dangerouslySetInnerHTML={{ __html: answer }} />
               </button>
-            </div>
+            </ButtonWrapper>
           ))}
         </div>
       </div>

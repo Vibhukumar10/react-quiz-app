@@ -3,7 +3,7 @@ import { fetchQuizQuestions } from "./API";
 //components
 import QuestionCard from "./components/QuestionCard";
 import SvgSvgLoader from "./iconComponents/SvgLoader";
-import Score from "./components/Score";
+// import Score from "./components/Score";
 import { StartButton } from "./components/StartButton";
 // import SvgBackgoundSvg from "./iconComponents/BackgoundSvg";
 import Header from "./components/Header";
@@ -18,6 +18,15 @@ export type AnswerObject = {
   correct: boolean;
   correctAnswer: string;
 };
+
+const category = [
+  "Sports",
+  "Computers",
+  "General Knowledge",
+  "Maths",
+  "Music",
+  "Geography",
+];
 
 const TOTAL_QUESTIONS = 10;
 
@@ -41,6 +50,7 @@ function App() {
   // console.log("gameOver: ", gameOver);
   // console.log("answered: ", answered);
   // console.log("finished: ", finished);
+  // console.log("checked: ", checked);
 
   //********************events*************************
   const startTrivia = async () => {
@@ -49,6 +59,7 @@ function App() {
     setUserAnswers([]);
     setAnswered(0);
     setFinished(false);
+    setChecked(false);
 
     const newQuestions = await fetchQuizQuestions(
       TOTAL_QUESTIONS,
@@ -118,6 +129,18 @@ function App() {
           </div>
         )}
 
+        {/* {**************** categories  ******************} */}
+
+        {/* <div>
+          {category.map((foundCategory) => (
+            <div>
+              <button>
+                <span>{foundCategory}</span>
+              </button>
+            </div>
+          ))}
+        </div> */}
+
         {/**********  Start/Restart Button ************/}
 
         {gameOver || finished ? (
@@ -126,12 +149,6 @@ function App() {
             answered={answered === TOTAL_QUESTIONS ? true : false}
           />
         ) : null}
-
-        {/* {**************  Score ******************} */}
-
-        {/* {!gameOver && !loading && (
-          <Score score={score} totalQ={TOTAL_QUESTIONS} />
-        )} */}
 
         {/*************  SVG Loader  ******************/}
         {loading && (
@@ -164,9 +181,6 @@ function App() {
             finishCallback={finishQuiz}
           />
         )}
-        {/* {answered === TOTAL_QUESTIONS && !finished && (
-          <button onClick={finishQuiz}>Finish</button>
-        )} */}
       </div>
     </>
   );

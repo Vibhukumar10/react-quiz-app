@@ -8,7 +8,7 @@ export const StartCSS = styled.div`
   }
 
   .glow-on-hover {
-    margin-top: 50px;
+    margin-top: 25px;
     font-family: "Roboto Mono", monospace;
     font-weight: 500;
     font-size: 2rem;

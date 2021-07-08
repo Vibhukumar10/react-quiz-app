@@ -62,6 +62,7 @@ const QuestionCard: React.FC<props> = ({
         <div className="options">
           {answer.map((answer) => (
             <ButtonWrapper
+              className="option-container"
               key={answer}
               correct={userAnswer?.correctAnswer === answer}
               userClicked={userAnswer?.answer === answer}
@@ -79,12 +80,6 @@ const QuestionCard: React.FC<props> = ({
           ))}
         </div>
       </div>
-
-      {/* <div className="next">
-        <button onClick={nextCallback}>
-          <ArrowForwardIosIcon />
-        </button>
-      </div> */}
     </div>
   </CardCSS>
 );

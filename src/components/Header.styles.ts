@@ -9,4 +9,17 @@ export const HeaderCSS = styled.div`
     border: 2px dashed #fff;
     padding: 0.03em 0.25em;
   }
+
+  .header {
+    margin: 10px auto 25px;
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 3rem;
+    }
+    .header {
+      width: 400px;
+    }
+  }
 `;

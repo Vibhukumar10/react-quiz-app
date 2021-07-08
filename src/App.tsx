@@ -3,8 +3,9 @@ import { fetchQuizQuestions } from "./API";
 //components
 import QuestionCard from "./components/QuestionCard";
 import SvgSvgLoader from "./iconComponents/SvgLoader";
-// import Score from "./components/Score";
 import { StartButton } from "./components/StartButton";
+import Category from "./components/Category";
+import FinalScore from "./components/FinalScore";
 // import SvgBackgoundSvg from "./iconComponents/BackgoundSvg";
 import Header from "./components/Header";
 //types
@@ -20,12 +21,12 @@ export type AnswerObject = {
 };
 
 const category = [
+  "General Knowledge",
   "Sports",
   "Computers",
-  "General Knowledge",
-  "Maths",
-  "Music",
   "Geography",
+  "Music",
+  "Vehicles",
 ];
 
 const TOTAL_QUESTIONS = 10;
@@ -41,6 +42,8 @@ function App() {
   const [answered, setAnswered] = useState(0);
   const [finished, setFinished] = useState(false);
   const [checked, setChecked] = useState(false);
+  const [catDis, setCatDis] = useState(false);
+  const [cat, setCat] = useState("");
 
   // console.log("loading: ", loading);
   // console.log("questions: ", questions);
@@ -51,6 +54,8 @@ function App() {
   // console.log("answered: ", answered);
   // console.log("finished: ", finished);
   // console.log("checked: ", checked);
+  console.log("catDis: ", catDis);
+  console.log("cat: ", cat);
 
   //********************events*************************
   const startTrivia = async () => {
@@ -60,9 +65,11 @@ function App() {
     setAnswered(0);
     setFinished(false);
     setChecked(false);
+    setCatDis(true);
 
     const newQuestions = await fetchQuizQuestions(
       TOTAL_QUESTIONS,
+      cat,
       Difficulty.EASY
     );
 
@@ -109,8 +116,15 @@ function App() {
 
   const finishQuiz = () => {
     setFinished(true);
+    setCatDis(false);
+    setCat("");
   };
 
+  const disableCat = (e: React.MouseEvent<HTMLButtonElement>) => {
+    setCatDis(true);
+    const cat = e.currentTarget.value;
+    setCat(cat);
+  };
   //***************************************************
 
   return (
@@ -121,25 +135,11 @@ function App() {
 
         {/* {*************  FinalScore  **************} */}
 
-        {finished && (
-          <div>
-            <h1>
-              Your Score is: {score}/{TOTAL_QUESTIONS}
-            </h1>
-          </div>
-        )}
+        {finished && <FinalScore score={score} totalQ={TOTAL_QUESTIONS} />}
 
         {/* {**************** categories  ******************} */}
 
-        {/* <div>
-          {category.map((foundCategory) => (
-            <div>
-              <button>
-                <span>{foundCategory}</span>
-              </button>
-            </div>
-          ))}
-        </div> */}
+        <Category category={category} callback={disableCat} catDis={catDis} />
 
         {/**********  Start/Restart Button ************/}
 
@@ -150,11 +150,11 @@ function App() {
           />
         ) : null}
 
-        {/*************  SVG Loader  ******************/}
+        {/****************  SVG Loader  ******************/}
         {loading && (
           <div
             style={{
-              marginTop: "120px",
+              marginTop: "80px",
               display: "flex",
               justifyContent: "center",
               alignItems: "center",

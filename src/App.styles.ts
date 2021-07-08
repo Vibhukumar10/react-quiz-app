@@ -1,17 +1,17 @@
-import styled, { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
 
     html {
         height: 100vh;
         width: 100vw;
-        background-color: #ffa69e;
-        background-image: linear-gradient(315deg, #ffa69e 0%, #5d4954 74%);     
+        /*background: #39A2DB;*/
+        background: #0A81AB;
         font-family: Montserrat, san-serif;
     }
 
     body {
-        margin-top: 20px;
+        margin: 50px 0 0;
         display: flex;
         align-items: center;
         justify-content: center;

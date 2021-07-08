@@ -89,6 +89,45 @@ export const CardCSS = styled.div`
       transition: 0.5s;
     }
   }
+
+  @media (max-width: 768px) {
+    .container {
+      width: 350px;
+      height: 500px;
+    }
+
+    .quiz {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .next {
+      position: absolute;
+      bottom: 210px;
+      right: 237.5px;
+    }
+
+    .finish {
+      position: absolute;
+      bottom: 210px;
+      right: 210px;
+    }
+
+    .options {
+      width: 100%;
+      height: 250px;
+    }
+
+    .question {
+      width: 100%;
+      height: 80px;
+    }
+
+    .status-bar {
+      padding: 0 4px;
+      margin-top: 20px;
+    }
+  }
 `;
 
 export const ButtonWrapper = styled.div<ButtonWrapperProps>`
@@ -109,7 +148,7 @@ export const ButtonWrapper = styled.div<ButtonWrapperProps>`
         : "2px solid #000"};
 
     font-size: ${({ answered, correct, userClicked }) =>
-      answered && (userClicked || correct) ? "1.2rem" : "1rem"};
+      answered && (userClicked || correct) ? "1rem" : "0.9rem"};
 
     color: ${({ answered, correct, userClicked }) =>
       answered && (userClicked || correct) ? "#111" : ""};
@@ -125,5 +164,11 @@ export const ButtonWrapper = styled.div<ButtonWrapperProps>`
   button:hover {
     background: ${({ answered }) => !answered && "lightblue"};
     transition: 0.5s;
+  }
+
+  @media (max-width: 768px) {
+    button {
+      width: 100%;
+    }
   }
 `;

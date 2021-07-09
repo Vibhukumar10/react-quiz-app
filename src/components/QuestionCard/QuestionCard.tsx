@@ -1,7 +1,7 @@
 import React from "react";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 //types
-import { AnswerObject } from "../App";
+import { AnswerObject } from "../../App";
 //styles
 import { CardCSS, ButtonWrapper } from "./QuestionCard.styles";
 

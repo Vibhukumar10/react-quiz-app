@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { fetchQuizQuestions } from "./API";
 //components
-import QuestionCard from "./components/QuestionCard";
+import QuestionCard from "./components/QuestionCard/QuestionCard";
 import SvgSvgLoader from "./iconComponents/SvgLoader";
-import { StartButton } from "./components/StartButton";
-import Category from "./components/Category";
-import FinalScore from "./components/FinalScore";
+import { StartButton } from "./components/StartButton/StartButton";
+import Category from "./components/Category/Category";
+import FinalScore from "./components/FinalScore/FinalScore";
 // import SvgBackgoundSvg from "./iconComponents/BackgoundSvg";
-import Header from "./components/Header";
+import Header from "./components/Header/Header";
 //types
 import { QuestionsState, Difficulty } from "./API";
 //styles

@@ -82,7 +82,7 @@ export const CardCSS = styled.div`
     }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 768px) and (min-width: 500px) {
     .container {
       width: 350px;
       height: 500px;
@@ -94,6 +94,19 @@ export const CardCSS = styled.div`
     }
 
     .next {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 20px 0 0;
+    }
+    .finish {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 20px 0 0;
+    }
+
+    /*.next {
       position: absolute;
       bottom: 210px;
       right: 237.5px;
@@ -103,14 +116,16 @@ export const CardCSS = styled.div`
       position: absolute;
       bottom: 210px;
       right: 210px;
-    }
+    }*/
 
     .options {
+      margin-top: 40px;
       width: 100%;
       height: 250px;
     }
 
     .question {
+      font-size: 1rem;
       width: 100%;
       height: 80px;
     }
@@ -123,8 +138,9 @@ export const CardCSS = styled.div`
 
   @media (max-width: 500px) {
     .container {
-      width: 200px;
+      width: 240px;
       height: 420px;
+      padding: 16px 24px 32px;
     }
 
     .quiz {
@@ -133,29 +149,37 @@ export const CardCSS = styled.div`
     }
 
     .next {
-      position: absolute;
-      bottom: 50px;
-      right: 166px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 10px 0 0;
+      button {
+        width: 40px;
+        height: 40px;
+      }
     }
 
     .finish {
-      position: absolute;
-      bottom: 57px;
-      right: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 20px 0 0;
     }
 
     .options {
-      width: 100%;
+      margin-top: 40px;
+      width: 80%;
       height: 225px;
     }
 
     .question {
-      font-size: 15px;
+      font-size: 0.85rem;
       width: 100%;
       height: 70px;
     }
 
     .status-bar {
+      padding: 0 20px;
       text-decoration: underline;
       font-size: 0.6rem;
       margin-top: 10px;

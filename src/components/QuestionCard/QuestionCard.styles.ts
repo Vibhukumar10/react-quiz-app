@@ -49,14 +49,6 @@ export const CardCSS = styled.div`
     justify-content: space-evenly;
   }
 
-  /*.wrapper {
-    width: 300px;
-    height: 50px;
-    background: transparent;
-    border-radius: 20px;
-    font-size: 0.9rem;
-  }*/
-
   .next {
     button {
       border: 2px solid #111;

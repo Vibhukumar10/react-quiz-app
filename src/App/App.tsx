@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import { fetchQuizQuestions } from "./API";
+import { fetchQuizQuestions } from "../API/API";
 //components
-import QuestionCard from "./components/QuestionCard/QuestionCard";
-import SvgSvgLoader from "./iconComponents/SvgLoader";
-import { StartButton } from "./components/StartButton/StartButton";
-import Category from "./components/Category/Category";
-import FinalScore from "./components/FinalScore/FinalScore";
+import QuestionCard from "../components/QuestionCard/QuestionCard";
+import SvgSvgLoader from "../iconComponents/SvgLoader";
+import { StartButton } from "../components/StartButton/StartButton";
+import Category from "../components/Category/Category";
+import FinalScore from "../components/FinalScore/FinalScore";
 // import SvgBackgoundSvg from "./iconComponents/BackgoundSvg";
-import Header from "./components/Header/Header";
+import Header from "../components/Header/Header";
 //types
-import { QuestionsState, Difficulty } from "./API";
+import { QuestionsState, Difficulty } from "../API/API";
 //styles
 import { GlobalStyle } from "./App.styles";
 

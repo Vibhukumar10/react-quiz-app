@@ -40,13 +40,3 @@ const Category: React.FC<props> = ({ category, callback, catDis }) => (
 );
 
 export default Category;
-
-/* <div key={foundCat}>
-        <button
-          onClick={callback}
-          disabled={catDis ? true : false}
-          value={foundCat}
-        >
-          <span dangerouslySetInnerHTML={{ __html: foundCat }} />
-        </button>
-      </div> */

@@ -5,8 +5,13 @@ export const GlobalStyle = createGlobalStyle`
     html {
         height: 100vh;
         width: 100vw;
-        /*background: #39A2DB;*/
-        background: #0A81AB;
+        background-color: #FBAB7E;
+        background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+        background-color: #FF9A8B;
+        background-image: linear-gradient(90deg, #FF9A8B 0%, #FF6A88 55%, #FF99AC 100%);
+        background-color: #74EBD5;
+        background-image: linear-gradient(90deg, #74EBD5 0%, #9FACE6 100%);
+                
         font-family: Montserrat, san-serif;
     }
 
@@ -20,5 +25,11 @@ export const GlobalStyle = createGlobalStyle`
 
     button {
         cursor: pointer;
+    }
+
+    @media (max-width: 500px) {
+        html {
+            background-image: linear-gradient(0deg, #74EBD5 0%, #9FACE6 100%);
+        }    
     }
 `;

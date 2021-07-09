@@ -45,18 +45,6 @@ function App() {
   const [catDis, setCatDis] = useState(false);
   const [cat, setCat] = useState("");
 
-  // console.log("loading: ", loading);
-  // console.log("questions: ", questions);
-  // console.log("number: ", number);
-  // console.log("userAnswers: ", userAnswers);
-  // console.log("score: ", score);
-  // console.log("gameOver: ", gameOver);
-  // console.log("answered: ", answered);
-  // console.log("finished: ", finished);
-  // console.log("checked: ", checked);
-  console.log("catDis: ", catDis);
-  console.log("cat: ", cat);
-
   //********************events*************************
   const startTrivia = async () => {
     setloading(true);

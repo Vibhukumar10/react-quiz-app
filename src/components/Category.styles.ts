@@ -22,6 +22,19 @@ export const CatCSS = styled.div`
       }
     }
   }
+
+  @media (max-width: 500px) {
+    .container {
+      width: 300px;
+      flex-wrap: wrap;
+      button {
+        font-size: 0.75rem;
+        width: 100px;
+        height: 45px;
+        margin: 0.3rem 0.1rem;
+      }
+    }
+  }
 `;
 
 export const ButtonWrapper = styled.div<ButtonWrapperProps>`
@@ -47,10 +60,7 @@ export const ButtonWrapper = styled.div<ButtonWrapperProps>`
   }
 
   button:hover {
-    background: #a239ea;
+    background: lightblue;
     transition: 0.5s;
-  }
-
-  @media (max-width: 768px) {
   }
 `;

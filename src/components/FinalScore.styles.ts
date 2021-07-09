@@ -19,4 +19,17 @@ export const ScoreCSS = styled.div`
     border: 2px dashed #fff;
     border-radius: 20px;
   }
+
+  @media (max-width: 500px) {
+    .container {
+      width: 300px;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      text-align: center;
+      width: 200px;
+      font-size: 1rem;
+    }
+  }
 `;

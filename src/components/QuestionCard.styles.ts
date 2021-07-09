@@ -128,6 +128,47 @@ export const CardCSS = styled.div`
       margin-top: 20px;
     }
   }
+
+  @media (max-width: 500px) {
+    .container {
+      width: 200px;
+      height: 420px;
+    }
+
+    .quiz {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .next {
+      position: absolute;
+      bottom: 50px;
+      right: 166px;
+    }
+
+    .finish {
+      position: absolute;
+      bottom: 57px;
+      right: 140px;
+    }
+
+    .options {
+      width: 100%;
+      height: 225px;
+    }
+
+    .question {
+      font-size: 15px;
+      width: 100%;
+      height: 70px;
+    }
+
+    .status-bar {
+      text-decoration: underline;
+      font-size: 0.6rem;
+      margin-top: 10px;
+    }
+  }
 `;
 
 export const ButtonWrapper = styled.div<ButtonWrapperProps>`
@@ -169,6 +210,12 @@ export const ButtonWrapper = styled.div<ButtonWrapperProps>`
   @media (max-width: 768px) {
     button {
       width: 100%;
+    }
+  }
+  @media (max-width: 500px) {
+    button {
+      width: 100%;
+      font-size: 12px;
     }
   }
 `;

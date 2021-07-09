@@ -22,4 +22,16 @@ export const HeaderCSS = styled.div`
       width: 400px;
     }
   }
+
+  @media (max-width: 500px) {
+    h1 {
+      font-size: 1.9rem;
+    }
+    .header {
+      margin-top: 0;
+      text-align: center;
+      padding: 4px;
+      width: 250px;
+    }
+  }
 `;

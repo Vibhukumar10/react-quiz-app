@@ -7,7 +7,7 @@ type props = {
 };
 
 const FinalScore: React.FC<props> = ({ score, totalQ }) => (
-  <ScoreCSS>
+  <ScoreCSS score={score}>
     <div className="container">
       <div className="design">
         <h1>

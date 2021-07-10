@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const ScoreCSS = styled.div`
+type props = {
+  score: number;
+};
+
+export const ScoreCSS = styled.div<props>`
   .container {
     display: flex;
     align-items: center;
@@ -13,10 +17,12 @@ export const ScoreCSS = styled.div`
   }
 
   h1 {
-    padding: 10px;
+    padding: 15px;
     font-family: roboto mono, sans-serif;
-    background: #fff;
-    border: 2px dashed #fff;
+    background: ${({ score }) =>
+      score >= 7 ? "lightgreen" : score < 7 && score >= 4 ? "#FFC947" : "red"};
+    font-size: 1.5rem;
+    border: 2px dashed #111;
     border-radius: 20px;
   }
 

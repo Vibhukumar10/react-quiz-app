@@ -105,7 +105,6 @@ function App() {
   const finishQuiz = () => {
     setFinished(true);
     setCatDis(false);
-    setCat("");
   };
 
   const disableCat = (e: React.MouseEvent<HTMLButtonElement>) => {

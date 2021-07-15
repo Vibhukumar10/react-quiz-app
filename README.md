@@ -1,6 +1,7 @@
 # [React-Quiz-App](https://vibhukumar10.github.io/react-quiz-app/)
 
 Simple Quiz-App using React [typescript] and APIs for Category-Wise Questions.
+
 ## Installation
 
 Install my-project with npm
@@ -38,7 +39,7 @@ Start the server
 
 ## Demo
 
-<img src="https://github.com/Vibhukumar10/Google-Keep-Clone/blob/main/media/demo.gif?raw=true" />
+<img src="https://github.com/Vibhukumar10/react-quiz-app/blob/main/media/React-Quiz-App.gif?raw=true" />
 
 ## Deployment
 

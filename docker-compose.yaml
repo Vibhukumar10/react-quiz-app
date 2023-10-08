@@ -1,0 +1,11 @@
+version: "3.8"
+
+services: 
+  app:
+    container_name: quiz-app-docker-container
+    image-name: quiz-app-docker-image
+    build:
+      context: .
+    ports:
+      - 8080:80
+
